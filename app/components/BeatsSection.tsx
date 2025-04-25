@@ -161,4 +161,3 @@ export default function BeatsSection() {
     </section>
   )
 }
-

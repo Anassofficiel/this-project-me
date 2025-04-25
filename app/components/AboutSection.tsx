@@ -3,7 +3,8 @@
 import { useRef } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Headphones, Music, Mic2, Award } from "lucide-react"
+import { Headphones, Music, Mic2, Award, ExternalLink } from "lucide-react"
+import Link from "next/link"
 
 const achievements = [
   { icon: <Headphones className="w-6 h-6" />, label: "Years of Experience", value: "10+" },
@@ -27,14 +28,29 @@ export default function AboutSection() {
       <div className="container mx-auto px-4">
         <motion.div className="grid md:grid-cols-2 gap-12 items-center" style={{ y, opacity }}>
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/0 rounded-3xl transform -rotate-6"></div>
-            <Image
-              src="/placeholder.svg?height=600&width=600"
-              alt="drannel"
-              width={600}
-              height={600}
-              className="rounded-3xl relative z-10"
-            />
+            {/* Decorative elements to make the image stand out but still fit the design */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-white/5 rounded-3xl transform -rotate-6 scale-105"></div>
+            <div className="absolute inset-0 border-2 border-green-500/20 rounded-3xl transform rotate-3 scale-95"></div>
+
+            {/* The image container with special effects */}
+            <div className="relative z-10 overflow-hidden rounded-3xl group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+
+              <Image
+                src="/images/music-collage.png"
+                alt="Music production elements"
+                width={600}
+                height={400}
+                className="rounded-3xl relative z-0 transform transition-transform duration-700 group-hover:scale-105"
+                style={{
+                  objectFit: "contain",
+                  backgroundColor: "rgba(0,0,0,0.7)",
+                }}
+              />
+
+              {/* Subtle animation effect */}
+              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black to-transparent z-20"></div>
+            </div>
           </div>
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">About drannel</h2>
@@ -66,10 +82,21 @@ export default function AboutSection() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Website link */}
+            <motion.div className="mt-8 inline-block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}>
+              <Link
+                href="https://exemple.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pro-button inline-flex items-center px-6 py-3 rounded-lg"
+              >
+                Visit Our Website <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>
     </section>
   )
 }
-

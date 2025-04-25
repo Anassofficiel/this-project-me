@@ -1,51 +1,38 @@
 "use client"
-
-import { Instagram, Facebook, Mail, Globe } from "lucide-react"
+import { Instagram, Facebook, Mail } from "lucide-react"
 import Link from "next/link"
 
-export default function Footer() {
+export default function SocialMediaButtons() {
   return (
-    <footer className="bg-black/70 backdrop-blur-sm py-8 border-t border-white/10 relative z-20">
-      <div className="container mx-auto px-4">
-        <div className="social-buttons-row">
+    <div className="fixed bottom-8 right-8 z-50">
+      <div className="main">
+        <div className="up">
           <Link href="https://www.instagram.com/mc.a_n_a_s_s" target="_blank" rel="noopener noreferrer">
-            <button className="social-button instagram-button" aria-label="Instagram">
-              <Instagram size={24} />
+            <button className="card1" aria-label="Instagram">
+              <Instagram className="instagram" size={30} />
             </button>
           </Link>
           <Link href="https://www.facebook.com/MC.Anass" target="_blank" rel="noopener noreferrer">
-            <button className="social-button facebook-button" aria-label="Facebook">
-              <Facebook size={24} />
+            <button className="card2" aria-label="Facebook">
+              <Facebook className="facebook" size={24} />
             </button>
           </Link>
+        </div>
+        <div className="down">
           <Link href="https://wa.me/0608788782" target="_blank" rel="noopener noreferrer">
-            <button className="social-button whatsapp-button" aria-label="WhatsApp">
-              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <button className="card3" aria-label="WhatsApp">
+              <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="whatsapp">
                 <path d="M19.001 4.908A9.817 9.817 0 0 0 11.992 2C6.534 2 2.085 6.448 2.08 11.908c0 1.748.458 3.45 1.321 4.956L2 22l5.255-1.377a9.916 9.916 0 0 0 4.737 1.206h.005c5.46 0 9.908-4.448 9.913-9.913A9.872 9.872 0 0 0 19 4.908h.001ZM11.992 20.15A8.216 8.216 0 0 1 7.797 19l-.3-.18-3.117.818.833-3.041-.196-.314a8.2 8.2 0 0 1-1.258-4.381c0-4.533 3.696-8.23 8.239-8.23a8.2 8.2 0 0 1 5.825 2.413 8.196 8.196 0 0 1 2.41 5.825c-.006 4.55-3.702 8.24-8.24 8.24Zm4.52-6.167c-.247-.124-1.463-.723-1.692-.808-.228-.08-.394-.123-.556.124-.166.246-.641.808-.784.969-.143.166-.29.185-.537.062-.247-.125-1.045-.385-1.99-1.23-.738-.657-1.232-1.47-1.38-1.716-.142-.247-.013-.38.11-.504.11-.11.247-.29.37-.432.126-.143.167-.248.248-.413.082-.167.043-.31-.018-.433-.063-.124-.557-1.345-.765-1.838-.2-.486-.404-.419-.557-.425-.142-.009-.309-.009-.475-.009a.911.911 0 0 0-.661.31c-.228.247-.864.845-.864 2.067 0 1.22.888 2.395 1.013 2.56.122.167 1.742 2.666 4.229 3.74.587.257 1.05.408 1.41.523.595.19 1.13.162 1.558.1.475-.072 1.464-.6 1.673-1.178.205-.58.205-1.075.142-1.18-.061-.104-.227-.165-.475-.29Z"></path>
               </svg>
             </button>
           </Link>
           <Link href="mailto:fatihianass99@gmail.com">
-            <button className="social-button email-button" aria-label="Email">
-              <Mail size={24} />
+            <button className="card4" aria-label="Email">
+              <Mail className="gmail" size={24} />
             </button>
-          </Link>
-          <Link href="https://exemple.com" target="_blank" rel="noopener noreferrer">
-            <button className="social-button" style={{ color: "#4285F4" }} aria-label="Website">
-              <Globe size={24} />
-            </button>
-          </Link>
-        </div>
-        <div className="text-center">
-          <p className="text-zinc-400">&copy; 2025 drannel. All rights reserved.</p>
-          <Link
-            href="https://google.com"
-            className="text-zinc-500 hover:text-green-400 text-sm mt-2 inline-block transition-colors"
-          >
-            Back to Google
           </Link>
         </div>
       </div>
-    </footer>
+    </div>
   )
 }

@@ -19,7 +19,7 @@ const FloatingParticle = ({ delay }: { delay: number }) => {
 
   return (
     <motion.div
-      className="absolute w-1 h-1 bg-white rounded-full"
+      className="absolute w-1 h-1 bg-green-400 rounded-full"
       style={{
         x: `${Math.random() * 100}%`,
         y: ySpring,
@@ -51,13 +51,10 @@ export default function HeroSection() {
   return (
     <section ref={containerRef} className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 to-black"></div>
-        {[...Array(50)].map((_, i) => (
-          <FloatingParticle key={i} delay={i * 100} />
-        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50 backdrop-blur-sm"></div>
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative pt-32 pb-16 px-4">
+      <motion.div style={{ y, opacity }} className="relative pt-32 pb-16 px-4 z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,18 +62,18 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-7xl md:text-8xl font-bold mb-6 tracking-tight relative">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500">
+            <h1 className="text-7xl md:text-8xl font-bold mb-6 tracking-tight relative text-shadow">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-green-400">
                 Elevate Your Sound
               </span>
               <motion.span
-                className="absolute -inset-1 bg-white rounded-full blur-3xl"
+                className="absolute -inset-1 bg-green-400 rounded-full blur-3xl"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 0.1, 0] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
               />
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-zinc-400 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-zinc-300 max-w-3xl mx-auto text-shadow-sm">
               Crafting unique beats that help artists stand out. From trap to lo-fi, find your perfect sound and take
               your music to the next level.
             </p>
@@ -84,19 +81,13 @@ export default function HeroSection() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative z-10">
                 <Button
                   size="lg"
-                  className="bg-white text-black hover:bg-zinc-200 text-lg px-8 py-6 rounded-full transition-colors relative overflow-hidden group"
+                  className="pro-button text-lg px-8 py-6 rounded-full"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   asChild
                 >
                   <a href="https://drqnnel.beatstars.com" target="_blank" rel="noopener noreferrer">
-                    <span className="relative z-10">Visit BeatStars</span>
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-zinc-200 to-white"
-                      initial={{ x: "100%" }}
-                      animate={{ x: isHovered ? "0%" : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    <span className="relative z-10">Buy Different Music</span>
                     <motion.span
                       animate={{ x: isHovered ? 5 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -121,11 +112,11 @@ export default function HeroSection() {
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-zinc-900/50 rounded-xl p-6 backdrop-blur-lg border border-white/10 transition-colors hover:border-white/20"
+                  className="bg-black/60 rounded-xl p-6 backdrop-blur-lg border border-green-500/20 transition-all hover:border-green-500/40 hover:shadow-lg hover:shadow-green-500/10"
                 >
-                  <div className="mb-2 text-white/70 flex justify-center">{stat.icon}</div>
+                  <div className="mb-2 text-green-400 flex justify-center">{stat.icon}</div>
                   <motion.div
-                    className="text-3xl font-bold mb-1"
+                    className="text-3xl font-bold mb-1 text-shadow-sm"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -142,4 +133,3 @@ export default function HeroSection() {
     </section>
   )
 }
-

@@ -22,6 +22,11 @@
   --border: 0 0% 10%;
   --input: 0 0% 10%;
   --ring: 0 0% 100%;
+
+  /* Green color variables */
+  --green-light: #4ade80;
+  --green-medium: #22c55e;
+  --green-dark: #16a34a;
 }
 
 body {
@@ -67,10 +72,166 @@ body {
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 0px white;
+    box-shadow: 0 0 0px var(--green-light);
   }
   to {
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 20px var(--green-light);
   }
 }
 
+/* Hexagonal pattern background */
+.hexagon-pattern {
+  width: 100%;
+  height: 100%;
+  --s: 200px; /* control the size */
+  --c1: #1d1d1d;
+  --c2: #4e4f51;
+  --c3: #3c3c3c;
+
+  background: repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 180deg) calc(0.5 * var(--s))
+    calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(from 30deg, var(--c1) 0 60deg, var(--c2) 0 120deg, var(--c3) 0 180deg);
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+/* Enhanced social media buttons with better hover effects */
+.social-buttons-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.social-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
+}
+
+.social-button:hover {
+  transform: translateY(-8px) scale(1.15);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-button:active {
+  transform: translateY(-2px) scale(1.25);
+}
+
+.instagram-button {
+  color: #cc39a4;
+}
+
+.instagram-button:hover {
+  background-color: #cc39a4;
+  color: white;
+}
+
+.facebook-button {
+  color: #1877f2;
+}
+
+.facebook-button:hover {
+  background-color: #1877f2;
+  color: white;
+}
+
+.whatsapp-button {
+  color: #25d366;
+}
+
+.whatsapp-button:hover {
+  background-color: #25d366;
+  color: white;
+}
+
+.email-button {
+  color: #f14336;
+}
+
+.email-button:hover {
+  background-color: #f14336;
+  color: white;
+}
+
+/* Enhanced button styles */
+.enhanced-button {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.enhanced-button:active {
+  transform: translateY(-2px) scale(1.15);
+}
+
+/* Add text shadow for better readability */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Professional button styles */
+.pro-button {
+  position: relative;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  background-color: var(--green-medium);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pro-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: all 0.6s ease;
+}
+
+.pro-button:hover {
+  background-color: var(--green-light);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pro-button:hover::before {
+  transform: translateX(100%);
+}
+
+.pro-button:active {
+  transform: translateY(-1px) scale(1.15);
+}
+
+/* Social media buttons in a row */
+.social-buttons-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}

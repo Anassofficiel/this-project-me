@@ -171,7 +171,7 @@ export default function LicenseOptionsSection() {
                     </div>
                   )}
 
-                  <Button asChild className={`w-full bg-white text-black hover:bg-zinc-200 transition-colors`}>
+                  <Button asChild className="w-full pro-button">
                     <a href="https://drqnnel.beatstars.com" target="_blank" rel="noopener noreferrer">
                       Get Started
                     </a>
@@ -185,4 +185,3 @@ export default function LicenseOptionsSection() {
     </section>
   )
 }
-

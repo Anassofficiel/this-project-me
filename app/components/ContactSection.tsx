@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -37,16 +39,27 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulating an API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log("Form submitted:", formData)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", message: "" })
-    }, 3000)
+
+    try {
+      // Format message for WhatsApp
+      const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A%0A*Message:*%0A${formData.message}`
+
+      // Open WhatsApp with the formatted message
+      window.open(`https://wa.me/0608788782?text=${whatsappMessage}`, "_blank")
+
+      console.log("Form submitted:", formData)
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({ name: "", email: "", message: "" })
+      }, 3000)
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setIsSubmitting(false)
+    }
   }
 
   const containerVariants = {
@@ -68,21 +81,22 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={ref} className="py-20 bg-zinc-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+    <section id="contact" ref={ref} className="py-20 relative overflow-hidden">
+      {/* Semi-transparent background for better readability */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={controls}
         className="container mx-auto px-4 relative z-10"
       >
-        <motion.h2 variants={itemVariants} className="text-5xl font-bold mb-10 text-center text-zinc-200">
+        <motion.h2 variants={itemVariants} className="text-5xl font-bold mb-10 text-center text-zinc-200 text-shadow">
           Get in Touch
         </motion.h2>
         <motion.div
           variants={itemVariants}
-          className="max-w-md mx-auto bg-black/50 backdrop-blur-lg rounded-lg p-8 shadow-2xl border border-white/10"
+          className="max-w-md mx-auto bg-black/70 backdrop-blur-lg rounded-lg p-8 shadow-2xl border border-white/10"
         >
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -117,11 +131,7 @@ export default function ContactSection() {
                 className="bg-white/5 border-zinc-700 text-zinc-200 placeholder-zinc-500"
               />
             </div>
-            <Button
-              type="submit"
-              className="w-full bg-white text-black hover:bg-zinc-200 transition-colors relative overflow-hidden group"
-              disabled={isSubmitting || isSubmitted}
-            >
+            <Button type="submit" className="w-full pro-button" disabled={isSubmitting || isSubmitted}>
               <span className="relative z-10 flex items-center justify-center">
                 {isSubmitting ? (
                   <>
@@ -140,7 +150,6 @@ export default function ContactSection() {
                   </>
                 )}
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-zinc-200 to-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </Button>
           </form>
         </motion.div>
@@ -148,4 +157,3 @@ export default function ContactSection() {
     </section>
   )
 }
-
